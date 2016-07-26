@@ -228,10 +228,10 @@ def main():
     parser = argparse.ArgumentParser(description='Make DAZ Install manager ZIP and metadata.')
     parser.add_argument('contents', metavar='directory or zip', type=str, help='Product input source (directory or zip file)')
     parser.add_argument('--prefix', dest='prefix', type=int, help='Manufacturer prefix')
-    parser.add_argument('--source', dest='source', type=str, choices=(idmap.keys() + map(str.lower, idmap.keys())), help='Manufacturers Product ID')
-    parser.add_argument('--id', dest='productid', type=str, help='Manufacturers Product ID')
-    parser.add_argument('--part', dest='productpart', type=int, help='Part of product')
-    parser.add_argument('--name', dest='productname', type=str, help='Name of product')
+    parser.add_argument('--source', dest='source', type=str, default='me', choices=(idmap.keys() + map(str.lower, idmap.keys())), help='Manufacturers Product ID')
+    parser.add_argument('--id', dest='productid', required=True, type=str, help='Manufacturers Product ID')
+    parser.add_argument('--part', dest='productpart', default=1, type=int, help='Part of product')
+    parser.add_argument('--name', dest='productname', required=True, type=str, help='Name of product')
 
     args = parser.parse_args()
 
